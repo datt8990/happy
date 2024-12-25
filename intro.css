@@ -1916,3 +1916,10 @@ h2 {
     transform: scale(1);
   }
 }
+@media (orientation: landscape) {
+  .box-button {
+    /* Đảm bảo rằng kích thước và vị trí nút cùng lúc được thay đổi */
+    width: 80%; /* Hoặc kích thước phù hợp khác */
+    margin: auto; /* Giữa màn hình */
+  }
+}
