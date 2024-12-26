@@ -1397,7 +1397,7 @@ body {
   border: 4px solid rgb(255, 255, 0);
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.5), 0 0 20px rgb(0, 0, 0, 0.1);
 }
-.rhombus-img {
+/* .rhombus-img {
   width: 250px;
   height: 250px;
   background-color: #fff;
@@ -1413,7 +1413,74 @@ body {
   height: 100%;
   object-fit: cover;
   transition: 0.5s;
+} */
+
+.rhombus-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    #ff5f6d,
+    #ffc371
+  ); /* Gradient tình yêu từ hồng đến cam */
+  border: 8px solid rgba(255, 182, 193, 0.8); /* Viền hồng phấn */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 105, 180, 0.8); /* Glow màu hồng */
+  transform: scale(0);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
+
+.rhombus-img:hover {
+  transform: scale(1.1) rotate(3deg); /* Zoom và xoay nhẹ */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 35px rgba(255, 105, 180, 1); /* Tăng glow khi hover */
+}
+
+.rhombus-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: filter 0.5s ease, transform 0.5s ease;
+  /* margin-top: 10px; */
+}
+
+.rhombus-img:before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255, 192, 203, 0.3), transparent);
+  border-radius: 50%;
+  z-index: -1; /* Hiệu ứng nền phát sáng */
+}
+
+.rhombus-img:after {
+  content: "❤";
+  position: absolute;
+  font-size: 80px;
+  color: rgba(255, 105, 180, 0.8); /* Màu hồng nhạt */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: heart-pulse 2s infinite; /* Hiệu ứng nhịp tim */
+}
+
+@keyframes heart-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
 .mail {
   position: absolute;
   z-index: 100000;
@@ -1918,8 +1985,17 @@ h2 {
 }
 @media (orientation: landscape) {
   .box-button {
-    /* Đảm bảo rằng kích thước và vị trí nút cùng lúc được thay đổi */
-    width: 80%; /* Hoặc kích thước phù hợp khác */
-    margin: auto; /* Giữa màn hình */
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 10000;
+    animation: scaleButton 3s 10s linear forwards;
+  }
+
+  body {
+    width: 100%;
+    height: calc(100% * 9 / 19.5);
+    overflow: hidden;
   }
 }
